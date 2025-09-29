@@ -1,0 +1,458 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@700&f[]=manrope@400,500,600,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ---------- ELITE PROFESSIONAL DESIGN SYSTEM ---------- */
+
+/* Typography Hierarchy */
+:root {
+  /* Font Sizes */
+  --font-size-hero: 24px;
+  --font-size-heading: 18px;
+  --font-size-body: 14px;
+  --font-size-caption: 12px;
+
+  /* Font Weights */
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+
+  /* Spacing Scale (8px base) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Border Standards */
+  --border-standard: 1px solid var(--black);
+  --border-orange: 1px solid var(--accent-primary);
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  /* Colors (Monochrome + Orange) */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-orange: #FF7A59;
+  --color-orange-hover: #FF6B45;
+  --color-orange-light: #FFF8F5;
+}
+
+/* Typography Classes */
+.font-hero {
+  font-family: 'Clash Display', sans-serif;
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+}
+
+.font-heading {
+  font-family: 'Clash Display', sans-serif;
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.3;
+}
+
+.font-body {
+  font-family: 'Manrope', sans-serif;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+}
+
+.font-caption {
+  font-family: 'Manrope', sans-serif;
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.4;
+}
+
+/* Standardized Components */
+.btn-primary {
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  border: var(--border-orange);
+  border-radius: var(--border-radius-md);
+  font-family: 'Manrope', sans-serif;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  padding: 12px 24px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-orange-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 122, 89, 0.3);
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 122, 89, 0.2);
+}
+
+.btn-secondary {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: var(--border-standard);
+  border-radius: var(--border-radius-md);
+  font-family: 'Manrope', sans-serif;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  padding: 10px 20px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  transform: translateY(-1px);
+}
+
+.card-standard {
+  background-color: var(--color-white);
+  border: var(--border-standard);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.card-standard:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.input-standard {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: var(--border-standard);
+  border-radius: var(--border-radius-md);
+  font-family: 'Manrope', sans-serif;
+  font-size: var(--font-size-body);
+  padding: 12px 16px;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.input-standard:focus {
+  outline: none;
+  border-color: var(--color-orange);
+  box-shadow: 0 0 0 3px rgba(255, 122, 89, 0.1);
+}
+
+.input-standard::placeholder {
+  color: var(--color-black);
+  opacity: 0.6;
+}
+
+/* ---------- MONOCHROME DESIGN SYSTEM (WHITE/BLACK/ORANGE ONLY) ---------- */
+:root {
+  --bg-main: #FFFFFF;
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --accent-primary: #FF7A59;
+  --accent-primary-hover: #FF6B45;
+  --border-color: #000000;
+  --card-bg: #FFFFFF;
+  --orange: #FF7A59;
+  --orange-dark: #FF6B45;
+  --orange-light: #FFF8F5;
+  --orange-50: #FFFFFF;
+  --black: #000000;
+  --white: #FFFFFF;
+  --gray-50: #FFFFFF;
+  --gray-100: #FFFFFF;
+  --gray-200: #F8F8F8;
+  --gray-300: #E0E0E0;
+  --gray-400: #CCCCCC;
+  --gray-500: #999999;
+  --gray-600: #666666;
+  --gray-700: #333333;
+  --gray-800: #1A1A1A;
+  --gray-900: #000000;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+}
+
+h1, h2, h3 {
+  font-family: 'Clash Display', sans-serif;
+}
+
+/* ---------- FORCE SINGLE-VIEWPORT ---------- */
+html, body, #__next {
+  height: 100%;
+  margin: 0;
+  font-family: 'Manrope', sans-serif;
+  background-color: var(--white);
+  color: var(--black);
+  overflow: hidden;
+}
+
+/* ---------- ENHANCED UI COMPONENTS ---------- */
+.glowing-shadow {
+  box-shadow: 0 0 15px 0px rgba(255, 122, 89, 0.3);
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--accent-primary);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Microinteractions */
+.btn-primary {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 122, 89, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.param-btn.active {
+  background-color: var(--accent-primary);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 122, 89, 0.3);
+  transform: scale(1.02);
+}
+
+.param-btn {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.param-btn:hover:not(.active) {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px var(--gray-400);
+}
+
+.result-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.result-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* Enhanced card styles */
+.card-elevated {
+  background: var(--white);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--gray-300);
+  box-shadow: 0 8px 32px var(--gray-400);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-elevated:hover {
+  box-shadow: 0 12px 40px var(--gray-600);
+  transform: translateY(-2px);
+}
+
+/* Smooth focus styles */
+.focus-enhanced:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 122, 89, 0.2);
+  border-color: var(--accent-primary);
+}
+
+/* Enhanced animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255, 122, 89, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 122, 89, 0.5);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Smooth state transitions */
+.state-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced hover effects */
+.hover-lift:hover {
+  transform: translateY(-1px);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Better scrollbar styling */
+.enhanced-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.enhanced-scrollbar::-webkit-scrollbar-track {
+  background: var(--gray-200);
+  border-radius: 4px;
+}
+
+.enhanced-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 122, 89, 0.3);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.enhanced-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 122, 89, 0.5);
+}
+
+/* ---------- RESPONSIVE IMPROVEMENTS ---------- */
+@media (max-width: 640px) {
+  .container-padding {
+    @apply px-2 py-2;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container-padding {
+    @apply px-4 py-4;
+  }
+}
+
+@media (min-width: 1025px) {
+  .container-padding {
+    @apply px-6 py-6;
+  }
+}
+
+/* ---------- CUSTOM SCROLLBARS ---------- */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--white);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--gray-400);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-600);
+}
+
+/* ---------- FOCUS STYLES ---------- */
+.focus-ring:focus {
+  @apply outline-none ring-2 ring-offset-2;
+  --tw-ring-color: var(--accent-primary);
+}
+
+/* ---------- ANIMATION CLASSES ---------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* ---------- UTILITY CLASSES ---------- */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---------- TINY SCROLLABLE AREAS ---------- */
+.scroll-y {
+  @apply overflow-y-auto;
+}
+
+/* ---------- MOBILE OPTIMIZATIONS ---------- */
+@media (max-width: 640px) {
+  .mobile-stack {
+    @apply flex-col space-y-4 space-x-0;
+  }
+
+  .mobile-text-sm {
+    @apply text-sm;
+  }
+
+  .mobile-hide {
+    @apply hidden;
+  }
+}
+
+/* ---------- MONOCHROME ONLY - NO OTHER COLORS ---------- */
