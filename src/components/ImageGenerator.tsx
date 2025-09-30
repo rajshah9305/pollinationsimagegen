@@ -43,6 +43,7 @@ export function ImageGenerator() {
   const [cfgScale, setCfgScale]       = useState(7);
   const [seed, setSeed]               = useState<string>('');
   const [numOutputs, setNumOutputs]   = useState(1);
+  const [isDiceSpinning, setIsDiceSpinning] = useState(false);
 
   const promptRef = useRef<HTMLTextAreaElement>(null);
 
@@ -111,31 +112,41 @@ export function ImageGenerator() {
     setSeed(Math.floor(Math.random() * 1000000000).toString());
   }, []);
 
+  const handleSurpriseClick = () => {
+    setIsDiceSpinning(true);
+    setPrompt('A city built on the back of a giant turtle, detailed illustration, fantasy.');
+
+    // Stop spinning after animation completes
+    setTimeout(() => {
+      setIsDiceSpinning(false);
+    }, 1000);
+  };
+
   /* ---------- UI ---------- */
   return (
     <div className="h-screen w-screen flex flex-col bg-white animate-fade-in">
       {/* header */}
-      <div className="flex items-center justify-between p-4 bg-white border-b border-black shadow-sm animate-slide-in">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-orange rounded-lg grid place-content-center shadow-lg">
-            <Sparkles className="w-5 h-5 text-white" />
+      <div className="flex items-center justify-between p-3 sm:p-4 bg-white border-b border-black shadow-sm animate-slide-in">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 bg-orange rounded-lg grid place-content-center shadow-lg">
+            <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
-          <h1 className="font-hero text-black hover:text-orange transition-colors cursor-default">RAJ AI IMAGE</h1>
+          <h1 className="font-hero text-sm sm:text-base md:text-lg text-black hover:text-orange transition-colors cursor-default">RAJ AI IMAGE</h1>
         </div>
         <button
           onClick={() => setShowHistory(!showHistory)}
-          className="p-2 text-black hover:text-orange hover:bg-orange rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
+          className="p-2 sm:p-2.5 text-black hover:text-orange hover:bg-orange rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
           title="History"
         >
-          <History className="w-5 h-5" />
+          <History className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
       </div>
 
       {/* main */}
-      <div className="flex-1 flex flex-col lg:flex-row gap-4 p-3 lg:p-4 animate-fade-in overflow-hidden">
+      <div className="flex-1 flex flex-col lg:flex-row gap-3 sm:gap-4 p-2 sm:p-3 lg:p-4 animate-fade-in min-h-0">
         {/* left panel */}
-        <div className="w-full lg:w-72 xl:w-80 card-standard animate-slide-in hover:-translate-y-1 flex flex-col h-full lg:h-auto">
-          <div className="space-y-3">
+        <div className="w-full lg:w-72 xl:w-80 2xl:w-80 card-standard animate-slide-in hover:-translate-y-1 flex flex-col h-full lg:h-auto">
+          <div className="space-y-4">
             <div>
               <label className="font-heading mb-1 block text-sm">Your Prompt</label>
               <textarea
@@ -149,14 +160,16 @@ export function ImageGenerator() {
               />
               <div className="flex gap-1 mt-1">
                 <button
-                  onClick={() => setPrompt('A city built on the back of a giant turtle, detailed illustration, fantasy.')}
-                  className="flex-1 px-2 py-1 text-xs font-semibold bg-white border border-black hover:bg-orange-50 rounded transition-all"
+                  onClick={handleSurpriseClick}
+                  className={`flex-1 px-2 py-1 text-xs font-semibold bg-white border border-black hover:bg-orange-50 rounded transition-all ${
+                    isDiceSpinning ? 'animate-dice-spin' : ''
+                  }`}
                 >
                   🎲 Surprise
                 </button>
                 <button
                   onClick={async () => { await navigator.clipboard.writeText(prompt); }}
-                  className="flex-1 px-2 py-1 text-xs text-black hover:bg-white rounded transition-all"
+                  className="flex-1 px-2 py-1 text-xs text-black hover:bg-white rounded transition-all border border-black"
                 >
                   <Copy className="w-3 h-3 inline mr-1" />Copy
                 </button>
@@ -175,14 +188,14 @@ export function ImageGenerator() {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <div>
                 <label className="font-heading mb-1 block text-sm">Model</label>
                 <select
                   value={model}
                   onChange={(e) => setModel(e.target.value)}
                   disabled={loadingModels || loading}
-                  className="input-standard font-body text-sm"
+                  className="input-standard font-body text-sm h-10 sm:h-auto"
                 >
                   {loadingModels ? (
                     <option>Loading models...</option>
@@ -202,7 +215,7 @@ export function ImageGenerator() {
                   value={numOutputs}
                   onChange={(e) => setNumOutputs(Number(e.target.value))}
                   disabled={loading}
-                  className="input-standard font-body text-sm"
+                  className="input-standard font-body text-sm h-10 sm:h-auto"
                 >
                   <option value={1}>1 image</option>
                   <option value={2}>2 images</option>
@@ -356,28 +369,28 @@ export function ImageGenerator() {
 
       {/* HISTORY MODAL */}
       {showHistory && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white w-full max-w-4xl max-h-[80vh] flex flex-col shadow-2xl border border-black rounded-lg">
-            <div className="flex items-center justify-between p-4 border-b border-black">
-              <h2 className="font-heading text-black">Generation History</h2>
-              <button onClick={() => setShowHistory(false)} className="btn-secondary p-2">
-                <X className="w-5 h-5" />
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-2 sm:p-4">
+          <div className="bg-white w-full max-w-sm sm:max-w-2xl lg:max-w-4xl xl:max-w-5xl max-h-[90vh] sm:max-h-[80vh] flex flex-col shadow-2xl border border-black rounded-lg">
+            <div className="flex items-center justify-between p-3 sm:p-4 border-b border-black">
+              <h2 className="font-heading text-sm sm:text-base text-black">Generation History</h2>
+              <button onClick={() => setShowHistory(false)} className="btn-secondary p-1.5 sm:p-2">
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
-            <div className="flex-1 p-4 overflow-y-auto">
+            <div className="flex-1 p-2 sm:p-4 overflow-y-auto">
               {history.length === 0 ? (
-                <div className="text-center text-black py-8">
-                  <History className="w-12 h-12 mx-auto mb-4" />
-                  <p className="font-body">No images in history yet</p>
+                <div className="text-center text-black py-6 sm:py-8">
+                  <History className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4" />
+                  <p className="font-body text-sm sm:text-base">No images in history yet</p>
                 </div>
               ) : (
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-4">
                   {history.map((img, i) => (
                     <img
                       key={i}
                       src={img.url}
                       alt={`history-${i}`}
-                      className="w-full h-32 object-cover rounded-lg cursor-pointer hover:scale-105 transition-transform border border-black"
+                      className="w-full h-24 sm:h-32 object-cover rounded-lg cursor-pointer hover:scale-105 transition-transform border border-black"
                       onClick={() => {
                         setCurrent(img.url);
                         setPrompt(img.prompt);
