@@ -16,7 +16,28 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        'clash': ['Clash Display', 'sans-serif'],
+        'manrope': ['Manrope', 'sans-serif'],
+      },
       colors: {
+        // Design System Colors
+        'white': '#FFFFFF',
+        'black': '#000000',
+        'orange': '#FF7A59',
+        'orange-hover': '#FF6B45',
+        'orange-light': '#FFF8F5',
+        'gray-50': '#FFFFFF',
+        'gray-100': '#FFFFFF',
+        'gray-200': '#F8F8F8',
+        'gray-300': '#E0E0E0',
+        'gray-400': '#CCCCCC',
+        'gray-500': '#999999',
+        'gray-600': '#666666',
+        'gray-700': '#333333',
+        'gray-800': '#1A1A1A',
+        'gray-900': '#000000',
+        // Legacy shadcn colors for compatibility
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
