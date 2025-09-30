@@ -161,7 +161,7 @@ export function ImageGenerator() {
               <div className="flex gap-1 mt-1">
                 <button
                   onClick={handleSurpriseClick}
-                  className={`flex-1 px-2 py-1 text-xs font-semibold bg-white border border-black hover:bg-orange-50 rounded transition-all ${
+                  className={`flex-1 px-2 py-1 text-xs font-semibold bg-white border border-black hover:bg-orange-light rounded transition-all ${
                     isDiceSpinning ? 'animate-dice-spin' : ''
                   }`}
                 >
@@ -243,7 +243,7 @@ export function ImageGenerator() {
           </div>
 
           {/* Advanced Settings Section */}
-          <div className="mt-3 p-2 bg-gray-50 border border-gray-200 rounded-lg">
+          <div className="mt-3 p-2 bg-white border border-black rounded-lg">
             <label className="font-heading mb-2 block text-sm">Advanced Settings</label>
 
             <div className="space-y-2">
@@ -257,9 +257,9 @@ export function ImageGenerator() {
                   value={cfgScale}
                   onChange={(e) => setCfgScale(Number(e.target.value))}
                   disabled={loading}
-                  className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
                 />
-                <div className="flex justify-between text-xs text-gray-600 mt-0.5">
+                <div className="flex justify-between text-xs text-black mt-0.5">
                   <span>1</span>
                   <span className="font-medium">{cfgScale}</span>
                   <span>20</span>
@@ -280,7 +280,7 @@ export function ImageGenerator() {
                   <button
                     onClick={generateRandomSeed}
                     disabled={loading}
-                    className="px-2 py-1 text-xs bg-white border border-gray-300 hover:bg-gray-50 rounded transition-all"
+                    className="px-2 py-1 text-xs bg-white border border-black hover:bg-gray-200 rounded transition-all"
                     title="Generate random seed"
                   >
                     🎲
@@ -310,8 +310,8 @@ export function ImageGenerator() {
 
           {/* NEW: inline error */}
           {error && (
-            <div className="mt-4 p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-2">
-              <AlertTriangle className="w-4 h-4" />
+            <div className="mt-4 p-3 rounded-lg bg-white border border-black text-black text-sm flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 text-orange" />
               {error.message}
             </div>
           )}
@@ -345,7 +345,7 @@ export function ImageGenerator() {
           <div className="flex-1 p-3 flex items-center justify-center relative overflow-hidden bg-white">
             {loading ? (
               <div className="flex flex-col items-center gap-4 animate-fade-in">
-                <Loader2 className="w-12 h-12 animate-spin" style={{ color: 'var(--color-orange)' }} />
+                <Loader2 className="w-12 h-12 animate-spin text-orange" />
                 <p className="font-body text-black">Generating your image...</p>
               </div>
             ) : current ? (
