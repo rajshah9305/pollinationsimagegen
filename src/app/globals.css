@@ -522,4 +522,22 @@ html, body, #__next {
 
 
 
-/* ---------- MONOCHROME ONLY - NO OTHER COLORS ---------- */
+/* ---------- MONOCHROME ONLY - NO OTHER COLORS ---------- 
+
+*//* ---------- mobile-first tweak ---------- */
+@media (max-width: 767px) {
+  /* stack order: image first, controls second */
+  main > div.grid {
+    display: flex;
+    flex-direction: column;
+  }
+  /* let the image card stay on screen */
+  section.lg\\:col-span-2 {
+    order: -1;
+    min-height: 50vh;
+  }
+  /* optional: make the history grid 2-column */
+  #history-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
